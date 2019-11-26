@@ -27,7 +27,7 @@ function Get-ScreenShot {
     )
 
 
-    [Reflection.Assembly]::LoadWithPartialName("System.Drawing")
+
     $BMP = New-Object Drawing.Bitmap $Bounds.Width, $Bounds.Height
     $Graphics = [Drawing.Graphics]::FromImage($BMP)
 
@@ -42,6 +42,8 @@ function Get-ScreenShot {
     $BMP.Dispose()
 }
 
+[Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+[Reflection.Assembly]::LoadWithPartialName("System.Drawing")
 
 $Signature = @"
 [DllImport("user32.dll", CharSet=CharSet.Auto, ExactSpelling=true)]
